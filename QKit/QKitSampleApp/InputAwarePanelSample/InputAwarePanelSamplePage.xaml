@@ -1,0 +1,59 @@
+﻿<Page x:Class="QKitSampleApp.InputAwarePanelSample.InputAwarePanelSamplePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:QKitSampleApp.InputAwarePanelSample"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:q="using:QKit"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <q:InputAwarePanel x:Name="IAPanel"
+                       AnimationMode="Dependent">
+        <Grid x:Name="LayoutRoot">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- TitlePanel -->
+            <StackPanel Margin="19,12,0,25">
+                <TextBlock Text="TEST VARIOUS ANIMATION MODES"
+                           Style="{ThemeResource TitleTextBlockStyle}"
+                           Typography.Capitals="SmallCaps" />
+            </StackPanel>
+
+            <!--TODO: Content should be placed within the following grid-->
+            <Grid Grid.Row="1"
+                  x:Name="ContentRoot">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ScrollViewer>
+                    <StackPanel>
+                        <TextBlock Text="This page is similar to Cortana's page with a keyboard at the bottom of page and sticky to the top of the keyboard."
+                                   Style="{ThemeResource ControlContextualInfoTextBlockStyle}"
+                                   Margin="19,0" />
+                        <RadioButton Content="No animation"
+                                     Margin="19,0"
+                                     Checked="None_Checked" />
+                        <RadioButton Content="Independent animation"
+                                     Margin="19,0"
+                                     Checked="Independent_Checked" />
+                        <RadioButton x:Name="DependentRadioButton"
+                                     Content="Dependent animation"
+                                     Margin="19,0"
+                                     Checked="Dependent_Checked" />
+                        <TextBlock x:Name="InfoText"
+                                   Style="{ThemeResource ControlContextualInfoTextBlockStyle}"
+                                   Margin="19,0" />
+                    </StackPanel>
+                </ScrollViewer>
+                <TextBox PlaceholderText="tap here"
+                         Margin="19"
+                         VerticalAlignment="Bottom"
+                         Grid.Row="1" />
+            </Grid>
+        </Grid>
+    </q:InputAwarePanel>
+</Page>

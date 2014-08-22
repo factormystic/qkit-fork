@@ -1,0 +1,57 @@
+﻿<Page x:Class="QKitSampleApp.ListPlaceholderSample.SearchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:QKitSampleApp.ListPlaceholderSample"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:q="using:QKit"
+      mc:Ignorable="d"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:SearchViewModel />
+    </Page.DataContext>
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- TitlePanel -->
+        <StackPanel Margin="19,12,19,5">
+            <TextBlock Text="SEARCH (TRY TO GET NO RESULTS)"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Typography.Capitals="SmallCaps" />
+            <TextBox Text="{Binding Query, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <!--TODO: Content should be placed within the following grid-->
+        <q:InputAwarePanel Grid.Row="1"
+                           AnimationMode="Dependent">
+            <Grid x:Name="ContentRoot">
+                <q:ListPlaceholder ListTarget="{Binding ElementName=ResultList}"
+                                   EmptyPlaceholderContent="{Binding Query}"
+                                   Margin="19,0,0,0">
+                    <q:ListPlaceholder.EmptyPlaceholderTemplate>
+                        <DataTemplate>
+                            <TextBlock Style="{ThemeResource ListViewEmptyStaticTextBlockStyle}">
+                                no results found for <Run Text="{Binding}"
+                                                          Foreground="{ThemeResource PhoneAccentBrush}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </q:ListPlaceholder.EmptyPlaceholderTemplate>
+                </q:ListPlaceholder>
+                <ListView x:Name="ResultList"
+                          ItemsSource="{Binding Results}"
+                          Margin="19,0,0,0">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"
+                                       Style="{ThemeResource ListViewItemTextBlockStyle}"
+                                       Margin="0,0,0,19" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </q:InputAwarePanel>
+    </Grid>
+</Page>

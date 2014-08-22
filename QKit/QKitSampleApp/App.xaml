@@ -1,0 +1,12 @@
+﻿<Application x:Class="QKitSampleApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:QKitSampleApp">
+    <Application.Resources>
+        <!--Pivot Style Corrections - Do not delete-->
+        <Thickness x:Key="PivotLandscapeThemePadding">19,18,0,0</Thickness>
+        <x:Int32 x:Key="PivotHeaderItemCharacterSpacing">0</x:Int32>
+        <Thickness x:Key="PivotItemMargin">19,16,19,0</Thickness>
+        <!--End Pivot Style Corrections-->
+    </Application.Resources>
+</Application>
