@@ -108,9 +108,9 @@ namespace QKit
             this.Unloaded += InputAwarePanel_Unloaded;
             allowedTextControls = new Dictionary<Type, Action<FrameworkElement>>
             {
-                {typeof(TextBox), RegisterTextChangeTextBox},
+                {typeof(TextBox), RegisterTextBoxEvents},
                 {typeof(RichEditBox), RegisterNothing},
-                {typeof(PasswordBox), RegisterTextChangePasswordBox}
+                {typeof(PasswordBox), RegisterPasswordBoxEvents}
             };
         }
         #endregion
@@ -226,7 +226,8 @@ namespace QKit
                     double? verticalScrollOffset = null;
                     double? horizontalScrollOffset = null;
                     double focusedElementHeight = focusedElement.ActualHeight + 9.5;
-
+                    double containerSvHeight = containerSv.ActualHeight;
+                    
                     // Get the ScrollViewer's content so we can calculate distance of 
                     // focusedElement from top so we can scroll that much.
                     var containerPanel = containerSv.Content as FrameworkElement;
@@ -242,11 +243,11 @@ namespace QKit
                     // position of the caret. If not a TextBox or focusedElement is smaller
                     // than visible area, then we just want to make sure it's in view.
                     var textBox = focusedElement as TextBox;
-                    if (textBox == null || focusedElementHeight < containerSv.ActualHeight)
+                    if (textBox == null || focusedElementHeight < containerSvHeight)
                     {
-                        if (offset.Y + focusedElementHeight > containerSv.VerticalOffset + containerSv.ActualHeight)
-                            verticalScrollOffset = offset.Y + Math.Min(focusedElementHeight, containerSv.ActualHeight)
-                                - containerSv.ActualHeight;
+                        if (offset.Y + focusedElementHeight > containerSv.VerticalOffset + containerSvHeight)
+                            verticalScrollOffset = offset.Y + Math.Min(focusedElementHeight, containerSvHeight)
+                                - containerSvHeight;
                         else if (offset.Y < containerSv.VerticalOffset)
                             verticalScrollOffset = offset.Y - 9.5;
                     }
@@ -267,8 +268,8 @@ namespace QKit
 
                         // Ugly code but checks if bottom of caret is below or if top of caret is above
                         // visible area of the parent ScrollViewer then scroll it into view.
-                        if (offset.Y + bottom > containerSv.VerticalOffset + containerSv.ActualHeight + partScrollViewer.VerticalOffset)
-                            verticalScrollOffset = offset.Y + bottom - containerSv.ActualHeight - partScrollViewer.VerticalOffset;
+                        if (offset.Y + bottom > containerSv.VerticalOffset + containerSvHeight + partScrollViewer.VerticalOffset)
+                            verticalScrollOffset = offset.Y + bottom - containerSvHeight - partScrollViewer.VerticalOffset;
                         else if (offset.Y + top < containerSv.VerticalOffset + partScrollViewer.VerticalOffset)
                             verticalScrollOffset = offset.Y + top - partScrollViewer.VerticalOffset;
                     }
@@ -281,17 +282,19 @@ namespace QKit
         private void RegisterNothing(FrameworkElement element)
         { }
 
-        private void RegisterTextChangeTextBox(FrameworkElement element)
+        private void RegisterTextBoxEvents(FrameworkElement element)
         {
             var textBox = element as TextBox;
             if (textBox != null)
             {
                 textBox.TextChanged -= TextBox_TextChanged;
                 textBox.TextChanged += TextBox_TextChanged;
+                textBox.SelectionChanged -= TextBox_SelectionChanged;
+                textBox.SelectionChanged += TextBox_SelectionChanged;
             }
         }
 
-        private void RegisterTextChangePasswordBox(FrameworkElement element)
+        private void RegisterPasswordBoxEvents(FrameworkElement element)
         {
             var passwordBox = element as PasswordBox;
             if (passwordBox != null)
@@ -423,6 +426,11 @@ namespace QKit
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ScrollTextBoxIntoView();
+        }
+
+        private void TextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
             ScrollTextBoxIntoView();
         }

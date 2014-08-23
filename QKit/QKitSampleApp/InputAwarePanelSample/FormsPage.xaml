@@ -59,7 +59,7 @@
                         <TextBox Header="Notes"
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"
-                                 Height="800"
+                                 Height="500"
                                  Margin="19,0,19,19" />
                     </StackPanel>
                 </ScrollViewer>
