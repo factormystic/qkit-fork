@@ -92,6 +92,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlphaJumpList.cs" />
+    <Compile Include="MultiSelectListView.cs" />
+    <Compile Include="Common\EdgeSelectButton.cs" />
     <Compile Include="GenericJumpList.cs" />
     <Compile Include="JumpListBase.cs" />
     <Compile Include="JumpList\JumpListGroup.cs" />

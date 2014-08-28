@@ -98,6 +98,10 @@
     <Compile Include="Common\ObservableDictionary.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="MultiSelectListView\EdgeSelectPage.xaml.cs">
+      <DependentUpon>EdgeSelectPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MultiSelectListView\EdgeSelectViewModel.cs" />
     <Compile Include="InputAwarePanelSample\ChatItemTemplateSelector.cs" />
     <Compile Include="InputAwarePanelSample\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
@@ -147,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="MultiSelectListView\EdgeSelectPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="InputAwarePanelSample\ChatPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

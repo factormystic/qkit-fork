@@ -21,31 +21,48 @@
                        Margin="0,-6,0,0"
                        Style="{ThemeResource HeaderTextBlockStyle}" />
         </StackPanel>
-
-        <StackPanel Grid.Row="1"
-                    x:Name="ContentRoot"
-                    Margin="19,-19,0,0">
-            <TextBlock Text="InputAwarePanel"
-                       Style="{ThemeResource GroupHeaderTextBlockStyle}"
-                       Margin="0,19,0,0" />
-            <HyperlinkButton Content="Bottom text input"
-                             Click="InputAwarePanelButton_Click" />
-            <HyperlinkButton Content="Chat sample"
-                             Click="ChatSampleButton_Click" />
-            <HyperlinkButton Content="Forms sample"
-                             Click="FormsSampleButton_Click" />
-            <TextBlock Text="JumpList"
-                       Style="{ThemeResource GroupHeaderTextBlockStyle}"
-                       Margin="0,19,0,0" />
-            <HyperlinkButton Content="AlphaJumplist sample"
-                             Click="AlphaJumpListButton_Click" />
-            <HyperlinkButton Content="GenericJumplist sample"
-                             Click="GenericJumpListButton_Click" />
-            <TextBlock Text="ListPlaceholder"
-                       Style="{ThemeResource GroupHeaderTextBlockStyle}"
-                       Margin="0,19,0,0" />
-            <HyperlinkButton Content="No results search"
-                             Click="SearchSampleButton_Click" />
-        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel x:Name="ContentRoot"
+                        Margin="19,-19,0,0">
+                <TextBlock Text="InputAwarePanel"
+                           Style="{ThemeResource GroupHeaderTextBlockStyle}"
+                           Margin="0,19,0,0" />
+                <HyperlinkButton Content="Bottom text input"
+                                 Click="InputAwarePanelButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+                <HyperlinkButton Content="Chat sample"
+                                 Click="ChatSampleButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+                <HyperlinkButton Content="Forms sample"
+                                 Click="FormsSampleButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+                <TextBlock Text="JumpList"
+                           Style="{ThemeResource GroupHeaderTextBlockStyle}"
+                           Margin="0,19,0,0" />
+                <HyperlinkButton Content="AlphaJumplist sample"
+                                 Click="AlphaJumpListButton_Click" />
+                <HyperlinkButton Content="GenericJumplist sample"
+                                 Click="GenericJumpListButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+                <TextBlock Text="ListPlaceholder"
+                           Style="{ThemeResource GroupHeaderTextBlockStyle}"
+                           Margin="0,19,0,0" />
+                <HyperlinkButton Content="No results search"
+                                 Click="SearchSampleButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+                <TextBlock Text="MultiSelectListView"
+                           Style="{ThemeResource GroupHeaderTextBlockStyle}"
+                           Margin="0,19,0,0" />
+                <HyperlinkButton Content="Edge select sample"
+                                 Click="DeleteContactsButton_Click"
+                                 HorizontalAlignment="Stretch"
+                                 HorizontalContentAlignment="Left" />
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

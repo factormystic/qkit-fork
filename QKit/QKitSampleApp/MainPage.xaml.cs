@@ -1,6 +1,7 @@
 ﻿using QKitSampleApp.InputAwarePanelSample;
 using QKitSampleApp.JumpListSample;
 using QKitSampleApp.ListPlaceholderSample;
+using QKitSampleApp.MultiSelectListView;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -76,6 +77,11 @@ namespace QKitSampleApp
         private void SearchSampleButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(SearchPage));
+        }
+
+        private void DeleteContactsButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(EdgeSelectPage));
         }
     }
 }
