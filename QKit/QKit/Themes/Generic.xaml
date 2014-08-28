@@ -352,7 +352,7 @@
         </Setter>
     </Style>
 
-    <!--EdgeMultiSelect-->
+    <!--MultiSelectListView-->
     <x:Double x:Key="EdgeMultiSelectButtonWidth">45</x:Double>
     <Thickness x:Key="EdgeMultiSelectButtonMargin">0,0,-26,0</Thickness>
     <x:Double x:Key="EdgeMultiSelectButtonVisualWidth">15</x:Double>
