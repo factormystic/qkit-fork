@@ -2,8 +2,6 @@
 using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Input;
 
 namespace QKit.Common
 {
@@ -11,9 +9,8 @@ namespace QKit.Common
     /// Represents a left-edge button to enable a ListView's multiple selection mode.
     /// </summary>
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class EdgeSelectButton : ButtonBase
+    public sealed class EdgeSelectButton : Button
     {
-
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the EdgeSelectButton class.
@@ -22,38 +19,6 @@ namespace QKit.Common
         {
             this.DefaultStyleKey = typeof(EdgeSelectButton);
             this.Click += EdgeSelectButton_Click;
-        }
-        #endregion
-
-        #region Methods
-        /// <summary>
-        /// Called before the PointerPressed event occurs.
-        /// </summary>
-        /// <param name="e">Event data for event.</param>
-        protected override void OnPointerPressed(PointerRoutedEventArgs e)
-        {
-            base.OnPointerPressed(e);
-            VisualStateManager.GoToState(this, "Pressed", true);
-        }
-
-        /// <summary>
-        /// Called before the PointerReleased event occurs.
-        /// </summary>
-        /// <param name="e">Event data for event.</param>
-        protected override void OnPointerReleased(PointerRoutedEventArgs e)
-        {
-            base.OnPointerReleased(e);
-            VisualStateManager.GoToState(this, "Normal", true);
-        }
-
-        /// <summary>
-        /// Called before the PointerCaptureLost event occurs.
-        /// </summary>
-        /// <param name="e">Event data for event.</param>
-        protected override void OnPointerCaptureLost(PointerRoutedEventArgs e)
-        {
-            base.OnPointerCaptureLost(e);
-            VisualStateManager.GoToState(this, "Normal", true);
         }
         #endregion
 
