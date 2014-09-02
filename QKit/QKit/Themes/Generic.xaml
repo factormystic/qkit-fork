@@ -28,7 +28,7 @@
     </ResourceDictionary.ThemeDictionaries>
 
     <!--RESOURCE VALUES-->
-    <Thickness x:Key="JumpListPadding">0,0,0,66.5</Thickness>
+    <Thickness x:Key="JumpListPadding">0,0,0,76</Thickness>
     <Thickness x:Key="JumpListHeaderItemMargin">19,0,0,9.5</Thickness>
 
     <!--DATA TEMPLATES-->
