@@ -4,26 +4,175 @@
                     xmlns:common="using:QKit.Common">
     <ResourceDictionary.ThemeDictionaries>
         <ResourceDictionary x:Key="Default">
-            <JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter" />
-            <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter" />
+            <JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter"
+                                             Enabled="{ThemeResource PhoneAccentBrush}"
+                                             Disabled="{ThemeResource PhoneChromeBrush}" />
+            <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter"
+                                             Enabled="{ThemeResource PhoneForegroundBrush}"
+                                             Disabled="{ThemeResource PhoneForegroundBrush}" />
             <Thickness x:Key="JumpListItemBorderThickness">0</Thickness>
             <Thickness x:Key="JumpListItemTextMargin">9.5,0,0,9.5</Thickness>
             <Thickness x:Key="AlphaJumpListGroupTextMargin">5.5,0,0,9.5</Thickness>
-            <SolidColorBrush x:Key="JumpListItemBackgroundBrush"
+            <SolidColorBrush x:Key="JumpListGroupHeaderBackgroundBrush"
                              Color="{ThemeResource SystemColorControlAccentColor}" />
-            <SolidColorBrush x:Key="JumpListItemTextForegroundBrush"
+            <SolidColorBrush x:Key="JumpListGroupHeaderTextForegroundBrush"
                              Color="White" />
+
+            <!--Item templates for JumpList ZoomedOutView-->
+            <DataTemplate x:Key="AlphaJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="79"
+                        Width="79"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,9.5,9.5">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="38.667"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="GenericJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="49.5"
+                        Margin="0,0,0,9.5"
+                        HorizontalAlignment="Stretch">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+            <JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter"
+                                             Enabled="{ThemeResource PhoneAccentBrush}"
+                                             Disabled="{ThemeResource PhoneChromeBrush}" />
+            <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter"
+                                             Enabled="{ThemeResource PhoneBackgroundBrush}"
+                                             Disabled="{ThemeResource PhoneLowBrush}" />
+            <Thickness x:Key="JumpListItemBorderThickness">0</Thickness>
+            <Thickness x:Key="JumpListItemTextMargin">9.5,0,0,9.5</Thickness>
+            <Thickness x:Key="AlphaJumpListGroupTextMargin">5.5,0,0,9.5</Thickness>
+            <SolidColorBrush x:Key="JumpListGroupHeaderBackgroundBrush"
+                             Color="{ThemeResource SystemColorControlAccentColor}" />
+            <SolidColorBrush x:Key="JumpListGroupHeaderTextForegroundBrush"
+                             Color="White" />
+
+            <!--Item templates for JumpList ZoomedOutView-->
+            <DataTemplate x:Key="AlphaJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="79"
+                        Width="79"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,9.5,9.5">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="38.667"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="GenericJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="49.5"
+                        Margin="0,0,0,9.5"
+                        HorizontalAlignment="Stretch">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
         </ResourceDictionary>
         <ResourceDictionary x:Key="HighContrast">
-            <JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter" />
-            <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter" />
+            <JumpListItemBackgroundConverter x:Key="JumpListItemBackgroundConverter"
+                                             Enabled="{ThemeResource PhoneBackgroundBrush}"
+                                             Disabled="{ThemeResource PhoneBackgroundBrush}" />
+            <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter"
+                                             Enabled="{ThemeResource PhoneForegroundBrush}"
+                                             Disabled="{ThemeResource PhoneDisabledBrush}"/>
             <Thickness x:Key="JumpListItemBorderThickness">2.5</Thickness>
             <Thickness x:Key="JumpListItemTextMargin">7,0,0,7</Thickness>
             <Thickness x:Key="AlphaJumpListGroupTextMargin">5.5,0,0,7</Thickness>
-            <SolidColorBrush x:Key="JumpListItemBackgroundBrush"
+            <SolidColorBrush x:Key="JumpListGroupHeaderBackgroundBrush"
                              Color="Transparent" />
-            <SolidColorBrush x:Key="JumpListItemTextForegroundBrush"
+            <SolidColorBrush x:Key="JumpListGroupHeaderTextForegroundBrush"
                              Color="{ThemeResource SystemColorControlAccentColor}" />
+
+            <!--Item templates for JumpList ZoomedOutView-->
+            <DataTemplate x:Key="AlphaJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="79"
+                        Width="79"
+                        HorizontalAlignment="Left"
+                        Margin="0,0,9.5,9.5">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="38.667"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="GenericJumpListPickerItemTemplate">
+                <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
+                        BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                        BorderThickness="{ThemeResource JumpListItemBorderThickness}"
+                        Height="49.5"
+                        Margin="0,0,0,9.5"
+                        HorizontalAlignment="Stretch">
+                    <TextBlock Text="{Binding Group.KeyDisplay}"
+                               Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
+                               FontSize="22"
+                               FontWeight="SemiBold"
+                               TextLineBounds="Tight"
+                               OpticalMarginAlignment="TrimSideBearings"
+                               IsColorFontEnabled="False"
+                               IsTextScaleFactorEnabled="False"
+                               VerticalAlignment="Bottom"
+                               Margin="{ThemeResource JumpListItemTextMargin}" />
+                </Border>
+            </DataTemplate>
         </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 
@@ -32,51 +181,9 @@
     <Thickness x:Key="JumpListHeaderItemMargin">19,0,0,9.5</Thickness>
 
     <!--DATA TEMPLATES-->
-    <!--Item templates for ZoomedOutView GridView/ListView-->
-    <DataTemplate x:Key="AlphaJumpListPickerItemTemplate">
-        <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
-                BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
-                BorderThickness="{ThemeResource JumpListItemBorderThickness}"
-                Height="79"
-                Width="79"
-                HorizontalAlignment="Left"
-                Margin="0,0,9.5,9.5">
-            <TextBlock Text="{Binding Group.KeyDisplay}"
-                       Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
-                       FontSize="38.667"
-                       FontWeight="SemiBold"
-                       TextLineBounds="Tight"
-                       OpticalMarginAlignment="TrimSideBearings"
-                       IsColorFontEnabled="False"
-                       IsTextScaleFactorEnabled="False"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Bottom"
-                       Margin="{ThemeResource JumpListItemTextMargin}" />
-        </Border>
-    </DataTemplate>
-    <DataTemplate x:Key="GenericJumpListPickerItemTemplate">
-        <Border Background="{Binding Converter={StaticResource JumpListItemBackgroundConverter}}"
-                BorderBrush="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
-                BorderThickness="{ThemeResource JumpListItemBorderThickness}"
-                Height="49.5"
-                Margin="0,0,0,9.5"
-                HorizontalAlignment="Stretch">
-            <TextBlock Text="{Binding Group.KeyDisplay}"
-                       Foreground="{Binding Converter={StaticResource JumpListItemForegroundConverter}}"
-                       FontSize="22"
-                       FontWeight="SemiBold"
-                       TextLineBounds="Tight"
-                       OpticalMarginAlignment="TrimSideBearings"
-                       IsColorFontEnabled="False"
-                       IsTextScaleFactorEnabled="False"
-                       VerticalAlignment="Bottom"
-                       Margin="{ThemeResource JumpListItemTextMargin}" />
-        </Border>
-    </DataTemplate>
-
     <!--Sticky header templates-->
     <DataTemplate x:Key="AlphaGroupHeaderTemplate">
-        <Border Background="{ThemeResource JumpListItemBackgroundBrush}"
+        <Border Background="{ThemeResource JumpListGroupHeaderBackgroundBrush}"
                 BorderBrush="{ThemeResource PhoneAccentBrush}"
                 BorderThickness="{ThemeResource JumpListItemBorderThickness}"
                 Width="49.5"
@@ -84,7 +191,7 @@
                 HorizontalAlignment="Left"
                 Margin="{ThemeResource JumpListHeaderItemMargin}">
             <TextBlock Text="{Binding KeyDisplay}"
-                       Foreground="{ThemeResource JumpListItemTextForegroundBrush}"
+                       Foreground="{ThemeResource JumpListGroupHeaderTextForegroundBrush}"
                        FontSize="39"
                        FontFamily="{StaticResource PhoneFontFamilySemiLight}"
                        TextLineBounds="Tight"
@@ -146,7 +253,7 @@
         <Setter Property="Background"
                 Value="{ThemeResource ContentDialogDimmingThemeBrush}" />
         <Setter Property="ItemTemplate"
-                Value="{StaticResource AlphaJumpListPickerItemTemplate}" />
+                Value="{ThemeResource AlphaJumpListPickerItemTemplate}" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="GridViewItem">
@@ -232,7 +339,7 @@
         <Setter Property="Background"
                 Value="{ThemeResource ContentDialogDimmingThemeBrush}" />
         <Setter Property="ItemTemplate"
-                Value="{StaticResource GenericJumpListPickerItemTemplate}" />
+                Value="{ThemeResource GenericJumpListPickerItemTemplate}" />
         <Setter Property="HorizontalContentAlignment"
                 Value="Stretch" />
         <Setter Property="ItemContainerStyle">
