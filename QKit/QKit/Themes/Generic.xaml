@@ -123,7 +123,7 @@
                                              Disabled="{ThemeResource PhoneBackgroundBrush}" />
             <JumpListItemForegroundConverter x:Key="JumpListItemForegroundConverter"
                                              Enabled="{ThemeResource PhoneForegroundBrush}"
-                                             Disabled="{ThemeResource PhoneDisabledBrush}"/>
+                                             Disabled="{ThemeResource PhoneDisabledBrush}" />
             <Thickness x:Key="JumpListItemBorderThickness">2.5</Thickness>
             <Thickness x:Key="JumpListItemTextMargin">7,0,0,7</Thickness>
             <Thickness x:Key="AlphaJumpListGroupTextMargin">5.5,0,0,7</Thickness>
@@ -347,6 +347,141 @@
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border x:Name="OuterContainer"
+                                        RenderTransformOrigin="0.5,0.5">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal" />
+                                            <VisualState x:Name="Pressed">
+                                                <Storyboard>
+                                                    <PointerDownThemeAnimation Storyboard.TargetName="TiltContainer" />
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="CheckboxPressed">
+                                                <Storyboard>
+                                                    <PointerDownThemeAnimation Storyboard.TargetName="CheckboxTiltContainer" />
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle"
+                                                                                   Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="{ThemeResource CheckBoxPressedBackgroundThemeBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph"
+                                                                                   Storyboard.TargetProperty="Fill">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="{ThemeResource CheckBoxPressedForegroundThemeBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualState x:Name="Disabled">
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetName="contentPresenter"
+                                                                     Storyboard.TargetProperty="Opacity"
+                                                                     Duration="0"
+                                                                     To="{ThemeResource ListViewItemDisabledThemeOpacity}" />
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="NormalRectangle"
+                                                                                   Storyboard.TargetProperty="Stroke"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="{ThemeResource CheckBoxDisabledBorderThemeBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="CheckGlyph"
+                                                                                   Storyboard.TargetProperty="Fill"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="{ThemeResource CheckBoxDisabledForegroundThemeBrush}" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectedBorder"
+                                                                                   Storyboard.TargetProperty="BorderBrush"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="Transparent" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectedEarmark"
+                                                                                   Storyboard.TargetProperty="Fill"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="Transparent" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="SelectedGlyph"
+                                                                                   Storyboard.TargetProperty="Fill"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="Transparent" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                            <VisualStateGroup.Transitions>
+                                                <VisualTransition From="Pressed"
+                                                                  To="Normal">
+                                                    <Storyboard>
+                                                        <PointerUpThemeAnimation Storyboard.TargetName="TiltContainer" />
+                                                    </Storyboard>
+                                                </VisualTransition>
+                                            </VisualStateGroup.Transitions>
+                                        </VisualStateGroup>
+                                        <VisualStateGroup x:Name="DataVirtualizationStates">
+                                            <VisualState x:Name="DataAvailable" />
+                                            <VisualState x:Name="DataPlaceholder">
+                                                <Storyboard>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderTextBlock"
+                                                                                   Storyboard.TargetProperty="Visibility"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="Visible" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                    <ObjectAnimationUsingKeyFrames Storyboard.TargetName="PlaceholderRect"
+                                                                                   Storyboard.TargetProperty="Visibility"
+                                                                                   Duration="0">
+                                                        <DiscreteObjectKeyFrame KeyTime="0"
+                                                                                Value="Visible" />
+                                                    </ObjectAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Border.RenderTransform>
+                                        <ScaleTransform x:Name="ContentScaleTransform" />
+                                    </Border.RenderTransform>
+                                    <Border x:Name="TiltContainer">
+                                        <Border x:Name="ContentBorder"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                            <Border.RenderTransform>
+                                                <TranslateTransform x:Name="ContentBorderTranslateTransform" />
+                                            </Border.RenderTransform>
+                                            <Grid>
+                                                <ContentPresenter x:Name="contentPresenter"
+                                                                  ContentTransitions="{TemplateBinding ContentTransitions}"
+                                                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                  Content="{TemplateBinding Content}"
+                                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                                  Margin="{TemplateBinding Padding}" />
+                                                <!-- The 'Xg' text simulates the amount of space one line of text will occupy.
+                                            In the DataPlaceholder state, the Content is not loaded yet so we
+                                            approximate the size of the item using placeholder text. -->
+                                                <TextBlock x:Name="PlaceholderTextBlock"
+                                                           Opacity="0"
+                                                           Text="Xg"
+                                                           Foreground="{x:Null}"
+                                                           Margin="{TemplateBinding Padding}"
+                                                           IsHitTestVisible="False"
+                                                           AutomationProperties.AccessibilityView="Raw" />
+                                                <Rectangle x:Name="PlaceholderRect"
+                                                           Visibility="Collapsed"
+                                                           Fill="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}"
+                                                           IsHitTestVisible="False" />
+                                            </Grid>
+                                        </Border>
+                                    </Border>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
                 </Style>
             </Setter.Value>
         </Setter>
