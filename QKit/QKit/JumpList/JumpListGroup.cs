@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace QKit.JumpList
 {
@@ -6,7 +6,7 @@ namespace QKit.JumpList
     /// A keyed list of objects that provides additional info for presention in a JumpListBase
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class JumpListGroup<T> : List<object>
+    public class JumpListGroup<T> : ObservableCollection<T>
     {
         /// <summary>
         /// Key that represents the identifier of group of objects.
@@ -17,14 +17,5 @@ namespace QKit.JumpList
         /// Display value that represents the group and used as the group header.
         /// </summary>
         public string KeyDisplay { get; set; }
-
-        /// <summary>
-        /// Gets the default enumerator for this group of objects.
-        /// </summary>
-        /// <returns>Enumerator of the group's list of objects</returns>
-        public new IEnumerator<object> GetEnumerator()
-        {
-            return (IEnumerator<object>)base.GetEnumerator();
-        }
     }
 }
