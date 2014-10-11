@@ -24,8 +24,10 @@ namespace QKit.JumpList
         /// <param name="groupDisplaySelector">A selector that will provide the value represent a group for display.</param>
         /// <returns>A list of JumpListGroups.</returns>
         public static List<JumpListGroup<TSource>> ToGroups<TSource, TSort, TGroup>(
-            this IEnumerable<TSource> source, Func<TSource, TSort> sortSelector,
-            Func<TSource, TGroup> groupSelector, Func<TGroup, String> groupDisplaySelector = null)
+            this IEnumerable<TSource> source,
+            Func<TSource, TSort> sortSelector,
+            Func<TSource, TGroup> groupSelector,
+            Func<TGroup, String> groupDisplaySelector = null)
         {
             var groups = new List<JumpListGroup<TSource>>();
 
@@ -59,7 +61,8 @@ namespace QKit.JumpList
         /// <param name="selector">A selector that will provide a value that items to be sorted and grouped by.</param>
         /// <returns>A list of JumpListGroups.</returns>
         public static List<JumpListGroup<TSource>> ToAlphaGroups<TSource>(
-            this IEnumerable<TSource> source, Func<TSource, string> selector)
+            this IEnumerable<TSource> source,
+            Func<TSource, string> selector)
         {
             if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
             {
